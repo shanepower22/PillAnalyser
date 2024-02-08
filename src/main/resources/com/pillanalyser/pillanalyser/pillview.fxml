@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.geometry.Rectangle2D?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+
+<BorderPane fx:id="mainWindow" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1098.0" style="-fx-background-color: #555555;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.pillanalyser.pillanalyser.MainController">
+   <top>
+      <MenuBar prefWidth="681.0" style="-fx-background-color: #BBBBBB;" BorderPane.alignment="CENTER">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+              <MenuItem mnemonicParsing="false" onAction="#openImage" text="Open Image" />
+                  <MenuItem mnemonicParsing="false" onAction="#closeProgram" text="Exit" />
+            </items>
+          </Menu>
+            <Menu mnemonicParsing="false" text="Image">
+               <items>
+               </items>
+            </Menu>
+        </menus>
+      </MenuBar>
+   </top>
+   <left>
+      <BorderPane fx:id="mainBorderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="499.0" minWidth="496.0" prefHeight="500.0" prefWidth="500.0" style="-fx-background-color: #EEEEEE; -fx-border-color: darkgrey; -fx-border-width: 1.5;" BorderPane.alignment="CENTER">
+         <center>
+            <ImageView fx:id="mainImageView" fitHeight="500.0" fitWidth="500.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+               <viewport>
+                  <Rectangle2D />
+               </viewport>
+               <BorderPane.margin>
+                  <Insets />
+               </BorderPane.margin>
+            </ImageView>
+         </center>
+         <BorderPane.margin>
+            <Insets left="40.0" top="40.0" />
+         </BorderPane.margin>
+      </BorderPane>
+   </left>
+   <right>
+      <BorderPane fx:id="analysisBorderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="499.0" minWidth="496.0" prefHeight="500.0" prefWidth="500.0" style="-fx-background-color: #EEEEEE; -fx-border-color: darkgrey; -fx-border-width: 1.5;" BorderPane.alignment="CENTER">
+         <center>
+            <ImageView fx:id="analysisImageView" fitHeight="500.0" fitWidth="500.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+               <viewport>
+                  <Rectangle2D />
+               </viewport>
+               <BorderPane.margin>
+                  <Insets />
+               </BorderPane.margin>
+            </ImageView>
+         </center>
+         <BorderPane.margin>
+            <Insets right="40.0" top="40.0" />
+         </BorderPane.margin>
+      </BorderPane>
+   </right>
+</BorderPane>
