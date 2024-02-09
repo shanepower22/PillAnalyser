@@ -1,0 +1,18 @@
+#hueSlider .track {
+    -fx-background-color: linear-gradient(to right, #ff0000, #ffff00, #00ff00, #00ffff, #0000ff, #ff00ff, #ff0000);
+}
+#saturationSlider {
+    -track-color: white;
+}
+#saturationSlider .track {
+    -fx-background-color: -track-color ;
+}
+
+#brightnessSlider .track {
+    -fx-background-color: linear-gradient(to right, #000000, #ffffff);
+}
+
+.default-color0.chart-series-line { -fx-stroke: red; -fx-stroke-width: 1px}
+.default-color1.chart-series-line { -fx-stroke: green; -fx-stroke-width: 1px}
+.default-color2.chart-series-line { -fx-stroke: blue; -fx-stroke-width: 1px}
+

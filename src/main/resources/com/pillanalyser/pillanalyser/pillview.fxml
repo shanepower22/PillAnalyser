@@ -2,11 +2,14 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.geometry.Rectangle2D?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Slider?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
 
 <BorderPane fx:id="mainWindow" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1098.0" style="-fx-background-color: #555555;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.pillanalyser.pillanalyser.MainController">
    <top>
@@ -18,17 +21,14 @@
                   <MenuItem mnemonicParsing="false" onAction="#closeProgram" text="Exit" />
             </items>
           </Menu>
-            <Menu mnemonicParsing="false" text="Image">
-               <items>
-               </items>
-            </Menu>
+            <Menu mnemonicParsing="false" text="Image" />
         </menus>
       </MenuBar>
    </top>
    <left>
-      <BorderPane fx:id="mainBorderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="499.0" minWidth="496.0" prefHeight="500.0" prefWidth="500.0" style="-fx-background-color: #EEEEEE; -fx-border-color: darkgrey; -fx-border-width: 1.5;" BorderPane.alignment="CENTER">
+      <BorderPane fx:id="mainBorderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="421.0" minWidth="414.0" prefHeight="421.0" prefWidth="414.0" style="-fx-background-color: #EEEEEE; -fx-border-color: darkgrey; -fx-border-width: 1.5;" BorderPane.alignment="CENTER">
          <center>
-            <ImageView fx:id="mainImageView" fitHeight="500.0" fitWidth="500.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+            <ImageView fx:id="mainImageView" fitHeight="422.0" fitWidth="317.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
                <viewport>
                   <Rectangle2D />
                </viewport>
@@ -38,14 +38,14 @@
             </ImageView>
          </center>
          <BorderPane.margin>
-            <Insets left="40.0" top="40.0" />
+            <Insets left="40.0" />
          </BorderPane.margin>
       </BorderPane>
    </left>
-   <right>
-      <BorderPane fx:id="analysisBorderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="499.0" minWidth="496.0" prefHeight="500.0" prefWidth="500.0" style="-fx-background-color: #EEEEEE; -fx-border-color: darkgrey; -fx-border-width: 1.5;" BorderPane.alignment="CENTER">
+   <center>
+      <BorderPane fx:id="analysisBorderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="422.0" minWidth="407.0" prefHeight="422.0" prefWidth="407.0" style="-fx-background-color: #EEEEEE; -fx-border-color: darkgrey; -fx-border-width: 1.5;" BorderPane.alignment="CENTER">
          <center>
-            <ImageView fx:id="analysisImageView" fitHeight="500.0" fitWidth="500.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+            <ImageView fx:id="analysisImageView" fitHeight="435.0" fitWidth="419.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
                <viewport>
                   <Rectangle2D />
                </viewport>
@@ -55,8 +55,42 @@
             </ImageView>
          </center>
          <BorderPane.margin>
-            <Insets right="40.0" top="40.0" />
+            <Insets />
          </BorderPane.margin>
       </BorderPane>
+   </center>
+   <right>
+      <VBox prefHeight="574.0" prefWidth="210.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label text="Tolerance" textFill="WHITE">
+               <VBox.margin>
+                  <Insets left="5.0" top="180.0" />
+               </VBox.margin>
+            </Label>
+            <Slider fx:id="toleranceSlider" blockIncrement="0.025" majorTickUnit="0.05" max="0.2" maxHeight="-Infinity" maxWidth="-Infinity" minorTickCount="0" prefHeight="14.0" prefWidth="200.0" showTickLabels="true" showTickMarks="true" value="0.08">
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </Slider>
+            <Label text="Hue" textFill="WHITE">
+               <VBox.margin>
+                  <Insets left="5.0" />
+               </VBox.margin>
+            </Label>
+            <Slider fx:id="hueSlider" majorTickUnit="90.0" max="360.0" maxHeight="-Infinity" maxWidth="-Infinity" minorTickCount="0" prefHeight="14.0" prefWidth="200.0" showTickLabels="true" showTickMarks="true" />
+            <Label text="Saturation" textFill="WHITE">
+               <VBox.margin>
+                  <Insets left="5.0" />
+               </VBox.margin>
+            </Label>
+            <Slider fx:id="saturationSlider" blockIncrement="0.1" majorTickUnit="0.25" max="1.0" maxHeight="-Infinity" maxWidth="-Infinity" minorTickCount="0" prefHeight="14.0" prefWidth="200.0" showTickLabels="true" showTickMarks="true" value="1.0" />
+            <Label text="Brightness" textFill="WHITE">
+               <VBox.margin>
+                  <Insets left="5.0" />
+               </VBox.margin>
+            </Label>
+            <Slider fx:id="brightnessSlider" blockIncrement="0.1" majorTickUnit="0.25" max="1.0" maxHeight="-Infinity" maxWidth="-Infinity" minorTickCount="0" prefHeight="14.0" prefWidth="200.0" showTickLabels="true" showTickMarks="true" value="1.0" />
+         </children>
+      </VBox>
    </right>
 </BorderPane>
