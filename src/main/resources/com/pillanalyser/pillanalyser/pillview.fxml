@@ -2,6 +2,7 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.geometry.Rectangle2D?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
@@ -90,6 +91,7 @@
                </VBox.margin>
             </Label>
             <Slider fx:id="brightnessSlider" blockIncrement="0.1" majorTickUnit="0.25" max="1.0" maxHeight="-Infinity" maxWidth="-Infinity" minorTickCount="0" prefHeight="14.0" prefWidth="200.0" showTickLabels="true" showTickMarks="true" value="1.0" />
+            <Button mnemonicParsing="false" onAction="#displayDisjointtext" text="Button" />
          </children>
       </VBox>
    </right>

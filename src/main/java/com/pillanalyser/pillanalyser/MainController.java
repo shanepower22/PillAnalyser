@@ -12,6 +12,9 @@ import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
 
 import java.io.File;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Set;
 
 public class MainController {
 
@@ -36,7 +39,7 @@ public class MainController {
     private double brightnessValue = 1;
     double selectedXCoord;
     double selectedYCoord;
-
+    private int[] arrayForPixels;
     @FXML
     private void initialize() {
         mainImageView.setOnMouseClicked(e -> {
@@ -113,17 +116,21 @@ public class MainController {
         } else {
             analysisImage = loadedImage;
         }
+        arrayForPixels = new int[(int) loadedImage.getWidth() * (int) loadedImage.getHeight()];
         if (analysisImage != null) {
             PixelReader pixelReader = analysisImage.getPixelReader();
             WritableImage analysedImage = new WritableImage((int) analysisImage.getWidth(), (int) analysisImage.getHeight());
             Color targetColor = pixelReader.getColor((int) selectedXCoord, (int) selectedYCoord);
             for (int x = 0; x < analysisImage.getWidth(); x++) {
                 for (int y = 0; y < analysisImage.getHeight(); y++) {
+                    int index = y * (int) analysisImage.getWidth() + x ;
                     Color pixelColor = pixelReader.getColor(x, y);
                     if (checkPixelColor(targetColor, pixelColor, tolerance)) {
                         analysedImage.getPixelWriter().setColor(x, y, Color.WHITE);
+                       arrayForPixels[index] = index;
                     } else {
                         analysedImage.getPixelWriter().setColor(x, y, Color.BLACK);
+                        arrayForPixels[index]= 0;
                     }
                 }
             }
@@ -154,5 +161,25 @@ public class MainController {
         double widthRatio = maxWidth / image.getWidth();
         double heightRatio = maxHeight / image.getHeight();
         return Math.min(widthRatio, heightRatio);
+    }
+    public void displayDisjointtext(){
+        int width = (int) loadedImage.getWidth();
+        Map<Integer, PillInfo> pillInfoMap = new HashMap<>();
+       for (int i = 0; i < arrayForPixels.length; i++) {
+            if (arrayForPixels[i] != 0) {
+
+                if (i + 1 < arrayForPixels.length && arrayForPixels[i + 1] != 0) {
+                    DisjointSet.union(arrayForPixels, i, i + 1);
+                }
+                if (i + width < arrayForPixels.length && arrayForPixels[i + width] != 0) {
+                    DisjointSet.union(arrayForPixels, i, i + width);
+                }
+            }
+        }
+        for (int i = 0; i < arrayForPixels.length; i++) {
+            System.out.print(DisjointSet.find  (arrayForPixels,i) + ((i+1) %width ==0 ? "\n": " "));
+                }
+            }
+        }
     }
 }
